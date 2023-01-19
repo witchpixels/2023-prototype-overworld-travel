@@ -8,11 +8,57 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseDialogueTestScene",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/test_scene.gd"
+}, {
+"base": "Camera2D",
+"class": &"CinematicCamera2D",
+"language": &"GDScript",
+"path": "res://addons/cinematic_camera_2d/scripts/cinematic_camera_2d.gd"
+}, {
+"base": "RefCounted",
+"class": &"DialogueLine",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_line.gd"
+}, {
+"base": "Resource",
+"class": &"DialogueResource",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_resource.gd"
+}, {
+"base": "RefCounted",
+"class": &"DialogueResponse",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_response.gd"
+}, {
+"base": "CanvasLayer",
+"class": &"Fade",
+"language": &"GDScript",
+"path": "res://addons/UniversalFade/Fade.gd"
+}, {
+"base": "Node2D",
+"class": &"VirtualCamera2D",
+"language": &"GDScript",
+"path": "res://addons/cinematic_camera_2d/scripts/virtual_camera_2d.gd"
+}]
+_global_script_class_icons={
+"BaseDialogueTestScene": "",
+"CinematicCamera2D": "res://addons/cinematic_camera_2d/icons/cinematic_camera_2d.svg",
+"DialogueLine": "",
+"DialogueResource": "res://addons/dialogue_manager/assets/icon.svg",
+"DialogueResponse": "",
+"Fade": "",
+"VirtualCamera2D": "res://addons/cinematic_camera_2d/icons/virtual_camera_2d.svg"
+}
+
 [application]
 
 config/name="Overworld Travel"
 config/description="Enter an interesting project description here!"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 
 [dotnet]
