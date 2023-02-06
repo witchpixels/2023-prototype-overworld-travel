@@ -36,7 +36,7 @@ var TOKEN_DEFINITIONS: Dictionary = {
 	DialogueConstants.TOKEN_NOT: RegEx.create_from_string("^(not( |$)|!)"),
 	DialogueConstants.TOKEN_AND_OR: RegEx.create_from_string("^(and|or)( |$)"),
 	DialogueConstants.TOKEN_STRING: RegEx.create_from_string("^(\".*?\"|\'.*?\')"),
-	DialogueConstants.TOKEN_VARIABLE: RegEx.create_from_string("^[a-zA-Z_][a-zA-Z_0-9]+"),
+	DialogueConstants.TOKEN_VARIABLE: RegEx.create_from_string("^[a-zA-Z_][a-zA-Z_0-9]*"),
 	DialogueConstants.TOKEN_COMMENT: RegEx.create_from_string("^#.*")
 }
 
@@ -770,7 +770,7 @@ func extract_response_prompt(line: String) -> String:
 	if translation_key:
 		line = line.replace("[ID:%s]" % translation_key, "")
 	
-	return line.strip_edges()
+	return line.replace("\\n", "\n").strip_edges()
 
 
 func extract_mutation(line: String) -> Dictionary:
@@ -862,12 +862,11 @@ func extract_goto(line: String) -> String:
 
 
 func extract_markers(line: String) -> Dictionary:
-	var text = line
-	var pauses = {}
-	var speeds = {}
-	var mutations = []
-	var bbcodes = []
-	var index_map = {}
+	var text: String = line
+	var pauses: Dictionary = {}
+	var speeds: Dictionary = {}
+	var mutations: Array[Array] = []
+	var bbcodes: Array = []
 	var time = null
 	
 	# Extract all of the BB codes so that we know the actual text (we could do this easier with
@@ -1204,7 +1203,8 @@ func check_next_token(token: Dictionary, next_tokens: Array[Dictionary], line_ty
 		DialogueConstants.TOKEN_BRACE_OPEN:
 			expected_token_types = [
 				DialogueConstants.TOKEN_STRING,
-				DialogueConstants.TOKEN_NUMBER
+				DialogueConstants.TOKEN_NUMBER,
+				DialogueConstants.TOKEN_BRACE_CLOSE
 			]
 		
 		DialogueConstants.TOKEN_PARENS_CLOSE, \

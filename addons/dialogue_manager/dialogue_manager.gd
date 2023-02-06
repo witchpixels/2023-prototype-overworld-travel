@@ -43,6 +43,9 @@ func _ready() -> void:
 		var state: Node = get_node("/root/" + node_name)
 		if state:
 			game_states.append(state)
+	
+	# Make the dialogue manager available as a singleton
+	Engine.register_singleton("DialogueManager", self)
 
 
 ## Step through lines and run any mutations until we either hit some dialogue or the end of the conversation
@@ -235,7 +238,7 @@ func create_dialogue_line(data: Dictionary, extra_game_states: Array) -> Dialogu
 			
 		DialogueConstants.TYPE_RESPONSE:
 			return DialogueLine.new({
-				type = DialogueConstants.TYPE_DIALOGUE,
+				type = DialogueConstants.TYPE_RESPONSE,
 				next_id = data.next_id,
 				extra_game_states = extra_game_states
 			})
@@ -352,8 +355,8 @@ func resolve_each(array: Array, extra_game_states: Array) -> Array:
 
 
 # Replace an array of line IDs with their response prompts
-func get_responses(ids: Array, resource: Resource, id_trail: String, extra_game_states: Array) -> Array:
-	var responses: Array = []
+func get_responses(ids: Array, resource: Resource, id_trail: String, extra_game_states: Array) -> Array[DialogueResponse]:
+	var responses: Array[DialogueResponse] = []
 	for id in ids:
 		var data: Dictionary = resource.get_meta("lines").get(id)
 		if DialogueSettings.get_setting("include_all_responses", false) or await check_condition(data, extra_game_states):
