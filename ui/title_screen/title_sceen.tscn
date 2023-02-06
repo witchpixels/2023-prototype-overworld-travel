@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cykss754wsecm"]
+
+[ext_resource type="Texture2D" uid="uid://c2pgyaoi3pys3" path="res://ui/global/background.png" id="1_ct5k7"]
+[ext_resource type="Theme" uid="uid://db2h42r2rnttn" path="res://ui/global/paper.tres" id="2_1vfhx"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.34375
+anchor_top = -0.833333
+anchor_right = -0.34375
+anchor_bottom = -0.833333
+offset_right = 2048.0
+offset_bottom = 2048.0
+scale = Vector2(1, 0.997785)
+texture = ExtResource("1_ct5k7")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScreenContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+stretch_mode = 0
+
+[node name="Title" type="Label" parent="ScreenContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_1vfhx")
+theme_override_font_sizes/font_size = 24
+text = "Witchpixels Overland Travel Thing"
+horizontal_alignment = 1

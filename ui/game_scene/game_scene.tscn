@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bylmyugwkmji5"]
+
+[ext_resource type="Texture2D" uid="uid://c2pgyaoi3pys3" path="res://ui/global/background.png" id="1_p551n"]
+[ext_resource type="Texture2D" uid="uid://di6u8vycgqt3e" path="res://world/mountain.png" id="2_854rk"]
+[ext_resource type="PackedScene" uid="uid://biqfquui7kgb1" path="res://entities/characters/sorcerex/sorcerex.tscn" id="2_pj682"]
+[ext_resource type="Script" path="res://ui/game_scene/utility/PathLine.cs" id="3_htnf2"]
+
+[sub_resource type="Curve2D" id="Curve2D_65n3o"]
+bake_interval = 25.0
+_data = {
+"points": PackedVector2Array(-35, -80.5, 35, 80.5, 933, 798, -32.9891, -57.63, 32.9891, 57.63, 1034, 895, -64.1652, -13.5181, 64.1652, 13.5181, 1136, 984, -43.9184, 46.7845, 43.9184, -46.7845, 1306, 1043, -51.8043, 22.6669, 51.8043, -22.6669, 1395, 1013, 1.88775, 67.487, -1.88775, -67.487, 1479, 837, -3.77976, 6.92957, 3.77976, -6.92957, 1460, 714)
+}
+point_count = 7
+
+[node name="game_scene" type="Node2D"]
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="world"]
+anchors_preset = -1
+anchor_left = -0.34375
+anchor_top = -0.833333
+anchor_right = -0.34375
+anchor_bottom = -0.833333
+offset_left = -13.75
+offset_top = -33.3333
+offset_right = 2034.25
+offset_bottom = 2014.67
+scale = Vector2(1, 0.997785)
+texture = ExtResource("1_p551n")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="world"]
+position = Vector2(1192, 867)
+texture = ExtResource("2_854rk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="world"]
+position = Vector2(1255, 874)
+texture = ExtResource("2_854rk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="world"]
+position = Vector2(1190, 892)
+texture = ExtResource("2_854rk")
+
+[node name="Path2D" type="Path2D" parent="world"]
+position = Vector2(-78, -77)
+curve = SubResource("Curve2D_65n3o")
+
+[node name="Pathline" type="Line2D" parent="world/Path2D"]
+position = Vector2(84, 85)
+points = PackedVector2Array(1038, 793)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("3_htnf2")
+
+[node name="Sorcerex" parent="." instance=ExtResource("2_pj682")]
+position = Vector2(942, 959)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(923, 973)

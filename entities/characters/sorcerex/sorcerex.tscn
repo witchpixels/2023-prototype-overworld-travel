@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://biqfquui7kgb1"]
+
+[ext_resource type="Script" path="res://entities/characters/sorcerex/PlayerBody.cs" id="1_3xhve"]
+[ext_resource type="Texture2D" uid="uid://bapt3bwsidjlf" path="res://entities/characters/sorcerex/sorcerex.png" id="2_5gf5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fawv"]
+size = Vector2(28, 27)
+
+[node name="Sorcerex" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3xhve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_0fawv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5gf5e")

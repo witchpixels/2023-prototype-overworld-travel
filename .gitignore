@@ -9,5 +9,7 @@ export_presets.cfg
 .mono/
 data_*/
 
+*.csproj.old*
+
 # rider imports
 .idea/
